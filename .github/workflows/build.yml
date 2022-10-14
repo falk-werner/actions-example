@@ -35,7 +35,7 @@ jobs:
             --pkggroup="misc" \
             --pkglicense=Unlicense --maintainer="Falk Werner" \
             -- cmake --install build
-          mv ${{github.workspace}}/build/*.deb {{github.workspace}}/build/actions-example.deb
+          mv ${{github.workspace}}/build/*.deb ${{github.workspace}}/build/actions-example.deb
 
       - name: Upload build results
         uses: actions/upload-artifact@v3
