@@ -26,14 +26,13 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
       
       - name: Package
-        run:
-          - echo "just an example" > description-pak
-          - >
-            checkinstall --install=no --default -nodoc -D
-            --showinstall=no --pakdir=bin --backup=no
-            --pkgname=actions-example --pkgversion="1.0.0"
-            --pkggroup="misc"
-            --pkglicense=Unlicense --maintainer="Falk Werner"
+        run: |
+          echo "just an example" > description-pak
+          sudo checkinstall --install=no --default -nodoc -D \
+            --showinstall=no --pakdir=bin --backup=no \
+            --pkgname=actions-example --pkgversion="1.0.0" \
+            --pkggroup="misc" \
+            --pkglicense=Unlicense --maintainer="Falk Werner" \
             -- cmake --install build
 
       - name: Upload build results
