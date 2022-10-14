@@ -22,6 +22,7 @@ jobs:
           name: actions-example.deb
     
       - name: Create Release
+        id: create-release
         uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,3 +32,13 @@ jobs:
           body: ${{github.ref}}
           draft: true
           prerelease: false
+
+      - name: Add Artifacts
+        uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ steps.create-release.outputs.upload_url }}
+            asset_path: actions-example.deb
+            asset_name: actions-example.deb
+            asset_content_type: application/vnd.debian.binary-package
