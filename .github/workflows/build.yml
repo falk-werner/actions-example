@@ -39,5 +39,5 @@ jobs:
       - name: Upload build results
         uses: actions/upload-artifact@v3
         with:
-          name: actions-example.deb
-          path: ${{github.workspace}}/build/*.deb 
+          path: ${{github.workspace}}/build/*.deb
+          retention-days: 5 
