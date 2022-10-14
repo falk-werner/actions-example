@@ -36,7 +36,7 @@ jobs:
             -- cmake --install build
 
       - name: Upload build results
-        uses: actions/upload-artifact@3
+        uses: actions/upload-artifact@v3
         with:
           name: actions-example.deb
           path: ${{github.workspace}}/build/*.deb 
