@@ -12,7 +12,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
-    needed:
+    needs:
       - build
     
     steps:
