@@ -8,3 +8,26 @@ on:
 jobs:
   build:
     uses: ./.github/workflows/build.yml
+
+  release:
+    runs-on: ubuntu-latest
+
+    neesd:
+      - build
+    
+    steps:
+      - name: Release notes
+        uses: actions/download-artifact@v3
+        with:
+          name: actions-example.deb
+    
+      - name: Create Release
+        uses: actions/create-release@1.1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{github.ref}}
+          release_name: ${{github.ref}}
+          body: ${{github.ref}}
+          draft: true
+          prerelease: false
