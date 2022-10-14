@@ -29,7 +29,8 @@ jobs:
         run: |
           echo "just an example" > description-pak
           sudo checkinstall --install=no --default -nodoc -D \
-            --showinstall=no --pakdir=bin --backup=no \
+            --showinstall=no --pakdir=${{github.workspace}}/build \
+            --backup=no \
             --pkgname=actions-example --pkgversion="1.0.0" \
             --pkggroup="misc" \
             --pkglicense=Unlicense --maintainer="Falk Werner" \
